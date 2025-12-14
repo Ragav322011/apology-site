@@ -1,0 +1,114 @@
+:root {
+  --bg-dark: #020617;
+  --bg-mid: #0b1025;
+  --glass: rgba(255,255,255,0.06);
+  --text-main: #e5e7eb;
+  --text-soft: #c7d2fe;
+  --accent: #94a3b8;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+body {
+  height: 100vh;
+  background: var(--bg-dark);
+  color: var(--text-main);
+  overflow: hidden;
+}
+
+#bg {
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle at top, var(--bg-mid), var(--bg-dark));
+  animation: breathe 14s ease infinite;
+  z-index: -1;
+}
+
+@keyframes breathe {
+  0% { filter: brightness(1); }
+  50% { filter: brightness(1.15); }
+  100% { filter: brightness(1); }
+}
+
+#app {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.page {
+  position: absolute;
+  width: 90%;
+  max-width: 520px;
+  padding: 42px 28px;
+  border-radius: 22px;
+  background: var(--glass);
+  backdrop-filter: blur(18px);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+  text-align: center;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.9s ease;
+  pointer-events: none;
+}
+
+.page.active {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+h1 {
+  font-size: 2rem;
+  font-weight: 500;
+}
+
+p {
+  margin-top: 18px;
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: var(--text-soft);
+}
+
+.equation {
+  font-family: monospace;
+  font-size: 1.3rem;
+  margin-top: 10px;
+  color: #e0e7ff;
+}
+
+.divider {
+  width: 70px;
+  height: 2px;
+  margin: 26px auto;
+  background: linear-gradient(to right, transparent, var(--accent), transparent);
+}
+
+/* NAV DOTS */
+.nav {
+  position: fixed;
+  bottom: 22px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #475569;
+  transition: background 0.4s ease, transform 0.4s ease;
+}
+
+.dot.active {
+  background: #c7d2fe;
+  transform: scale(1.4);
+}
